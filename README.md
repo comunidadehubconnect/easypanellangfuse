@@ -50,38 +50,22 @@ Adicione codigo abaixo dentro do Schema
             "port": 3000
           }
         ],
-      "env": "DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres \nNEXTAUTH_SECRET=mysecret \nSALT=mysalt \nNEXTAUTH_URL=https://$(EASYPANEL_DOMAIN)"
+        "env": "DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres \nNEXTAUTH_SECRET=mysecret \nSALT=mysalt \nNEXTAUTH_URL=https://$(EASYPANEL_DOMAIN)"
       }
     },
     {
-      "type": "app",
+      "type": "postgres",
       "data": {
-        "projectName": "db",
-        "serviceName": "db-langfuse",
-        "source": {
-          "type": "image",
-          "image": "postgres"
-        },
-        "domains": [
-          {
-            "host": "$(EASYPANEL_DOMAIN)",
-            "port": 5432
-          }
-        ],
-        "env":"POSTGRES_USER=postgres \nPOSTGRES_PASSWORD=postgres \nPOSTGRES_DB=postgres",
-        "mounts": [
-          {
-            "type": "volume",
-            "name": "database_data",
-            "mountPath": "/var/lib/postgresql/data"
-          }
-        ]
+        "projectName": "langfuse-db",
+        "serviceName": "langfuse-db",
+        "image": "bitnami/postgresql:16"
       }
     }
   ]
 }
 ```
 
+Adicione credenciais Postgres mande fazer Rebuild
 
 Pronto tudo Funcionando ✅😎
 
